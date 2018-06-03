@@ -5,9 +5,9 @@ app = flask.Flask(__name__)
 random.seed()
 
 # More puns
-# Get the CSS file locally and clean up
-# Add background image (space theme?)
-# Write about section
+# Get the CSS file locally?
+# Write about section with Daniel
+# Fix title rendering
 
 
 def get_data():
