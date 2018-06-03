@@ -8,6 +8,7 @@ random.seed()
 # Get the CSS file locally?
 # Write about section with Daniel
 # Fix title rendering
+# Link to exact line?
 
 
 def get_data():
