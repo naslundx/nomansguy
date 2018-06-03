@@ -11,7 +11,7 @@ random.seed()
 
 
 def get_data():
-    with open('puns.txt') as f:
+    with open('static/puns.txt') as f:
         contents = f.readlines()
         index = random.randint(0, len(contents) - 1)
         data = contents[index].split(',')
@@ -21,7 +21,9 @@ def get_data():
 @app.route('/')
 def hello_world():
     pun, desc = get_data()
-    print(pun, desc)
-
     rendered = flask.render_template('index.html', pun=pun, desc=desc)
     return rendered
+
+
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
