@@ -5,9 +5,7 @@ app = flask.Flask(__name__)
 random.seed()
 
 # More puns
-# Get the CSS file locally?
 # Write about section with Daniel
-# Fix title rendering
 # Link to exact line?
 
 
