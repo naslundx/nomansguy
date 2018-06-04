@@ -55,11 +55,17 @@ body, html {
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container" id="home">
-  <div class="w3-display-middle" >
-    <span class="w3-padding-large w3-black w3-xlarge w3-animate-opacity w3-wide force-center">{{ pun }}</span>
-    </br>
-    <h4 class="w3-padding-large">{{ desc }}</h4>
-  </div>
+    <div class="w3-display-left w3-hide-medium w3-hide-large" >
+        <span class="w3-padding-large w3-black w3-xlarge w3-animate-opacity w3-wide force-center">{{ pun }}</span>
+        </br>
+        <h4 class="w3-padding-large">{{ desc }}</h4>
+    </div>
+
+    <div class="w3-display-middle w3-hide-small" >
+        <span class="w3-padding-large w3-black w3-xlarge w3-animate-opacity w3-wide force-center">{{ pun }}</span>
+        </br>
+        <h4 class="w3-padding-large">{{ desc }}</h4>
+    </div>
 </div>
 
 <!-- Footer -->
