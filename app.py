@@ -4,7 +4,6 @@ import random
 app = flask.Flask(__name__)
 random.seed()
 
-# More puns
 # Write about section with Daniel
 # Link to exact line?
 
