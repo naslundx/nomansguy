@@ -3,7 +3,6 @@ import random
 import argparse
 import pymongo
 import os
-from boto.s3.connection import S3Connection
 
 ALL_PUNS = open('static/puns.txt').readlines()
 app = flask.Flask(__name__)
@@ -28,17 +27,21 @@ def get_data(index=None):
 
 
 def get_db_uri():
-    if args.debug:
-        pw = open('database.txt').readlines()[0].strip()
-    else:
-        pw = S3Connection(os.environ['DB_PASSWORD'])
+    try:
+        pw = os.environ['DB_PASSWORD']
+    except KeyError:
+        try:
+            pw = open('database.txt').readlines()[0].strip()
+        except IOError:
+            pw = ''
 
     return f'mongodb://nomansski:{pw}@ds247290.mlab.com:47290/naslundx-nomansski'
 
 
 def add_to_db(title, desc):
     try:
-        client = pymongo.MongoClient(get_db_uri())
+        uri = get_db_uri()
+        client = pymongo.MongoClient(uri)
         db = client['naslundx-nomansski']
         result = db.posts.insert_one({'title': title, 'desc': desc}).inserted_id
         client.close()
