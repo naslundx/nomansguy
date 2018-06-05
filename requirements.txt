@@ -1,3 +1,5 @@
+boto
 Flask
 gunicorn
 pycodestyle
+pymongo

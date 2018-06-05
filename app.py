@@ -1,6 +1,9 @@
 import flask
 import random
 import argparse
+import pymongo
+import os
+from boto.s3.connection import S3Connection
 
 ALL_PUNS = open('static/puns.txt').readlines()
 app = flask.Flask(__name__)
@@ -24,12 +27,54 @@ def get_data(index=None):
     return data[0].strip(), data[1].strip(), index
 
 
+def get_db_uri():
+    if args.debug:
+        pw = open('database.txt').readlines()[0].strip()
+    else:
+        pw = S3Connection(os.environ['DB_PASSWORD'])
+
+    return f'mongodb://nomansski:{pw}@ds247290.mlab.com:47290/naslundx-nomansski'
+
+
+def add_to_db(title, desc):
+    try:
+        client = pymongo.MongoClient(get_db_uri())
+        db = client['naslundx-nomansski']
+        result = db.posts.insert_one({'title': title, 'desc': desc}).inserted_id
+        client.close()
+        return result
+    except Exception:
+        return None
+
+
+def validate_add(title, desc):
+    return 0 < len(title) < 128 and 0 <= len(desc) < 128
+
+
+@app.route('/add', methods=['POST'])
+def add_post():
+    title = flask.request.form['title'].strip()
+    desc = flask.request.form['desc'].strip()
+
+    msg = 'Oops! Something went wrong. Please try again!'
+
+    if validate_add(title, desc) and add_to_db(title, desc):
+        msg = 'Thank you for the "' + title + '" suggestion! It will be reviewed and, if accepted, added to the list.'
+    
+    rendered = flask.render_template('add.html', msg=msg)
+    return rendered
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def hello_world(path):
-    index = try_parse_int(path)
-    pun, desc, line = get_data(index)
-    rendered = flask.render_template('index.html', pun=pun, desc=desc, index="%04d" % line)
+def main(path):
+    if path == 'add':
+        rendered = flask.render_template('add.html')
+    else:
+        index = try_parse_int(path)
+        pun, desc, line = get_data(index)
+        rendered = flask.render_template('index.html', pun=pun, desc=desc, index="%04d" % line)
+    
     return rendered
 
 

@@ -77,20 +77,22 @@ body, html {
   </div>
 </div>
 
-
-
-
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container" id="home">
     <div class="w3-display-middle" >
-      <span class="w3-padding w3-black w3-xxlarge w3-animate-opacity bold-text">{{ pun }}</span>
-      </br>
-      <h4>{{ desc }}</h4>
-    </div>
-    <div class="w3-display-bottomright w3-padding">
-        <a href="http://www.nomansski.com/{{ index }}">http://www.nomansski.com/{{ index }}</a>
+        <form method="POST">
+            <h3>Submit your own proposal!</h3>
+            <h4>Title:</h4>
+            <input name="title">
+            <h4>Description:</h4>
+            <input name="desc">
+            </br>
+            <input type="submit" class="w3-margin-top">
+        </form>
+        <p>{{ msg }}</p>
     </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="w3-center footer-color footer-margin" id="about">
