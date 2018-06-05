@@ -21,15 +21,15 @@ def get_data(index=None):
         index = index % len(ALL_PUNS)
 
     data = ALL_PUNS[index].split(',')
-    return data[0].strip(), data[1].strip()
+    return data[0].strip(), data[1].strip(), index
 
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def hello_world(path):
     index = try_parse_int(path)
-    pun, desc = get_data(index)
-    rendered = flask.render_template('index.html', pun=pun, desc=desc)
+    pun, desc, line = get_data(index)
+    rendered = flask.render_template('index.html', pun=pun, desc=desc, index="%04d" % line)
     return rendered
 
 
