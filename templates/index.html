@@ -14,6 +14,7 @@
 <title>No Man's Ski (puns of No Man's Sky)</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Humorous puns based on the title of the game No Man's Sky.">
 <link rel="stylesheet" href="static/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,7 +46,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url('/static/space.png');
+    background-image: url('/static/space.jpg');
     min-height: 100%;
 }
 
@@ -85,9 +86,8 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container" id="home">
     <div class="w3-display-middle" >
-      <span class="w3-padding w3-black w3-xxlarge w3-animate-opacity bold-text">{{ pun }}</span>
-      </br>
-      <h4>{{ desc }}</h4>
+      <h1 class="w3-padding w3-black w3-xxlarge w3-animate-opacity bold-text">{{ pun }}</h1>
+      <h2>{{ desc }}</h2>
     </div>
     <div class="w3-display-bottomright w3-padding">
         <a href="http://www.nomansski.com/{{ index }}">http://www.nomansski.com/{{ index }}</a>
