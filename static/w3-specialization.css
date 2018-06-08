@@ -1,0 +1,42 @@
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Hind", sans-serif;
+    text-align: center;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+body, html {
+    height: 100%;
+    color: #e8ecfd;
+    background-color: #020617;
+    line-height: 2.0;
+}
+
+.footer-color {
+    background-color: #020617;
+}
+
+.bgimg-1 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/static/space.jpg');
+    min-height: 100%;
+}
+
+.w3-wide { letter-spacing: 10px; }
+.w3-display-middle { width:90%; }
+.w3-hover-opacity { cursor: pointer; }
+.footer-margin { 
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1 {
+        background-attachment: scroll;
+    }
+}

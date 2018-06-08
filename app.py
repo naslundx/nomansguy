@@ -6,9 +6,7 @@ import os
 
 ALL_PUNS = open('static/puns.txt').readlines()
 app = flask.Flask(__name__)
-print(app.config['SEND_FILE_MAX_AGE_DEFAULT'])
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 604800
-print(app.config['SEND_FILE_MAX_AGE_DEFAULT'])
 random.seed()
 
 
